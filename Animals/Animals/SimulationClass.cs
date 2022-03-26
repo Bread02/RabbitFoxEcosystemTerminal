@@ -8,13 +8,18 @@ namespace Animals
 {
     public class Simulation
     {
+        // objects
         public Animal animal;
+        public Fox fox;
+        public Rabbit rabbit;
+        public Grass grass;
+
         public static List<Fox> foxList = default!;
         public static List<Rabbit> rabbitList = default!;
         public static List<Grass> grassList = default!;
 
         // creates the fox and rabbit list, and sets number of steps to run the simulation.
-        public Simulation(int Foxes, int Rabbits, int steps)
+        public Simulation(int Foxes, int Rabbits, int Grass, int steps)
         {
             List<Fox> foxList = new List<Fox>();
             List<Rabbit> rabbitList = new List<Rabbit>();
@@ -34,12 +39,20 @@ namespace Animals
                 Console.WriteLine("Created Rabbit");
             }
 
-            for (int i = 0; i < Rabbits; i++)
+            for (int i = 0; i < Grass; i++)
             {
                 Grass grass = new Grass(10);
                 grassList.Insert(0, grass);
                 Console.WriteLine("Created Grass");
             }
+
+            // testing if rabbits are made
+            for (int i = 0; i < rabbitList.Count; i++)
+            {
+                if(rabbitList[i] != null)
+                Console.WriteLine(rabbitList[i]);
+            }
+
 
             Steps(steps);
         }
@@ -50,13 +63,32 @@ namespace Animals
         {
             for (int i = 0; i <= steps; i++)
             {
-                animal.IncreaseAge();
-                animal.IncreaseHunger();
-                animal.Reproduce();
-                animal.Kill();
+                rabbitList.ForEach(rabbit => rabbit.IncreaseAge());
+                /*
+                for (int i = 0; i < rabbitList.Count; i++)
+                {
+                    rabbitList[i] => rabbit.IncreaseAge();
+                }
+                */
+                /*
+                foreach(Rabbit rabbit in rabbitList)
+                {
+                    rabbit.IncreaseAge();
+                    rabbit.IncreaseHunger();
+                    rabbit.Reproduce();
+                    rabbit.Kill();
+                }
+                */
 
+
+                /*
+                fox.IncreaseAge();
+                fox.IncreaseHunger();
+                fox.Reproduce();
+                fox.Hunt();
+                fox.Kill();
                 Console.WriteLine("There are now " + foxList.Count + " foxes, " + rabbitList.Count + " rabbits and " + grassList.Count + " grass.");
-
+                */
             }
         }
 

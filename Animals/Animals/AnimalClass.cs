@@ -18,7 +18,7 @@ namespace Animals
 
         public Animal()
         {
-            Animal animal = new Animal();
+            return;
         }
 
         public virtual int GetAge()
