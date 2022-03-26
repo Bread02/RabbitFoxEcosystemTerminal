@@ -59,22 +59,27 @@ namespace Animals
         // one step also lets foxes kill rabbits.
         private void Steps(int steps)
         {
-            // complete rabbit steps
-            rabbitList2.ForEach(rabbit => rabbit.IncreaseAge());
-            rabbitList2.ForEach(rabbit => rabbit.Kill());
-        //    rabbitList2.ForEach(rabbit => rabbit.Reproduce());
-            rabbitList2.ForEach(rabbit => rabbit.IncreaseHunger());
-            rabbitList2.ForEach(rabbit => rabbit.Eat());
+            for (int i = 1; i < steps; i++)
+            {
+                // complete rabbit steps
+                rabbitList2.ForEach(rabbit => rabbit.IncreaseAge());
+                rabbitList2.ForEach(rabbit => rabbit.Kill());
+                //    rabbitList2.ForEach(rabbit => rabbit.Reproduce());
+                rabbitList2.ForEach(rabbit => rabbit.IncreaseHunger());
+                rabbitList2.ForEach(rabbit => rabbit.Eat());
 
-            // complete fox steps
-            foxList2.ForEach(fox => fox.IncreaseAge());
-            foxList2.ForEach(fox => fox.Kill());
-          //  foxList2.ForEach(fox => fox.Reproduce());
-            foxList2.ForEach(fox => fox.IncreaseHunger());
-            foxList2.ForEach(fox => fox.Hunt());
+                // complete fox steps
+                foxList2.ForEach(fox => fox.IncreaseAge());
+                foxList2.ForEach(fox => fox.Kill());
+                //  foxList2.ForEach(fox => fox.Reproduce());
+                foxList2.ForEach(fox => fox.IncreaseHunger());
+                foxList2.ForEach(fox => fox.Hunt());
 
-            // complete grass steps
-         //   grassList2.ForEach(grass => grass.Reproduce());
+                // complete grass steps
+                //   grassList2.ForEach(grass => grass.Reproduce());
+                Console.WriteLine("Step " + i + " complete.");
+                Console.WriteLine("There are " + foxList2.Count + " foxes, " + rabbitList2.Count + " rabbits and " + grassList2.Count + " grass.");
+            }
         }
 
 

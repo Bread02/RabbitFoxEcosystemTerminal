@@ -11,7 +11,7 @@ namespace Animals
         // creates a simulation with the specified starting number of rabbits, foxes, grass and steps
         public static void Main(string[] args)
         {
-            Simulation simulation = new Simulation(2, 10, 2, 2);
+            Simulation simulation = new Simulation(2, 10, 2, 10);
             Animal animal = new Animal();
         }
     }
