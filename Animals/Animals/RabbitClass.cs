@@ -24,6 +24,12 @@ namespace Animals
 
         }
 
+        // reproduces between 4 and 6 rabbits
+        public override void Reproduce()
+        {
+
+        }
+
 
     }
 }
