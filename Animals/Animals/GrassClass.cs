@@ -8,6 +8,8 @@ namespace Animals
 {
     public class Grass
     {
+        private Simulation simulation { get; set; }
+
         private int grassReproductionRate;
         public Grass(int grassReproductionRate)
         {

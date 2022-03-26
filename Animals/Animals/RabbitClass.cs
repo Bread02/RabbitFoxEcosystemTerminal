@@ -8,17 +8,22 @@ namespace Animals
 {
     public class Rabbit : Animal, IRabbit
     {
-        public Rabbit(int age, bool alive, int hunger)
+        private Simulation simulation { get; set; }
+
+        private List<Rabbit> rabbitList {  get; set; }
+
+        public Rabbit(int age, bool alive, int hunger, Simulation simulation)
         {
-            return;
+            simulation = simulation.GetSimulation();
+            rabbitList = simulation.rabbitList2;
         }
 
         // a rabbit eats 1 grass per step
         public override void Eat()
         {
             var random = new Random();
-            int index = random.Next(Simulation.grassList2.Count);
-            Simulation.DestroyGrass(index);
+            int index = random.Next(simulation.grassList2.Count);
+            simulation.DestroyGrass(index);
             hunger = 0;
         }
 
@@ -27,8 +32,9 @@ namespace Animals
         {
             if (age > 0)
             {
-                Rabbit rabbit = new Rabbit(0, true, 0);
-                Simulation.rabbitList2.Insert(0, rabbit);
+                Rabbit rabbit1 = new Rabbit(0, true, 0, simulation);
+              //  simulation.rabbitList2.Insert(0, rabbit1);
+                rabbitList.Insert(99, rabbit1);
             }
         }
 
@@ -36,7 +42,7 @@ namespace Animals
         {
             if (alive == false)
             {
-                Simulation.rabbitList2.RemoveAt(0);
+                simulation.rabbitList2.RemoveAt(0);
             }
         }
 

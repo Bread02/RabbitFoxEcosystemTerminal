@@ -74,7 +74,6 @@ namespace Animals
         {
             if (hunger >= 100)
             {
-                // kill animal
                 alive = false;
                 Kill();
             }

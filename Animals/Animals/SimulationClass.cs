@@ -15,16 +15,20 @@ namespace Animals
         private Grass grass;
         private int numberOfSteps;
 
+        public Simulation simulation { get; set; }
 
-        public static List<Fox> foxList2 = new List<Fox>();
-        public static List<Rabbit> rabbitList2 = new List<Rabbit>();
-        public static List<Grass> grassList2 = new List<Grass>();
+
+        public List<Fox> foxList2 = new List<Fox>();
+        public List<Rabbit> rabbitList2 = new List<Rabbit>();
+        public List<Grass> grassList2 = new List<Grass>();
 
         public static List<Rabbit> rabbitsToAdd = new List<Rabbit>();
 
         // creates the fox and rabbit list, and sets number of steps to run the simulation.
         public Simulation(int Foxes, int Rabbits, int Grass, int steps)
         {
+
+            simulation = this;
             // create lists then store them as a class variable
             List<Fox> foxList = new List<Fox>();
             foxList = foxList2;
@@ -46,7 +50,7 @@ namespace Animals
 
             for (int i = 0; i < Rabbits; i++)
             {
-                Rabbit rabbit = new Rabbit(0, true, 0);
+                Rabbit rabbit = new Rabbit(0, true, 0, simulation);
                 rabbitList2.Insert(0, rabbit);
                 Console.WriteLine("Created Rabbit");
             }
@@ -71,15 +75,20 @@ namespace Animals
                 // complete rabbit steps
                 rabbitList2.ForEach(rabbit => rabbit.IncreaseAge());
                 rabbitList2.ForEach(rabbit => rabbit.Kill());
-                //   rabbitList2.ForEach(rabbit => rabbit.Reproduce());
+             //   rabbitList2.ForEach(rabbit => rabbit.Reproduce());
 
+                foreach(var rabbit in rabbitList2)
+                {
+                    rabbit.Reproduce();
+                }
+                /*
                 // try to get this to copy the reproduce code, currently doubling rabbit population
                 var fixedSize = rabbitList2.ToArray();
                 foreach(var rabbit in fixedSize)
                 {
                     rabbitList2.Add(rabbit);
                 }
-
+                */
 
                 rabbitList2.ForEach(rabbit => rabbit.IncreaseHunger());
                 rabbitList2.ForEach(rabbit => rabbit.Eat());
@@ -103,9 +112,9 @@ namespace Animals
 
 
         // remove Rabbit from simulation
-        public static void KillRabbit(int index)
+        public void KillRabbit(int index)
         {
-            rabbitList2.RemoveAt(index);
+            simulation.rabbitList2.RemoveAt(index);
         }
 
         // remove fox from simulation
@@ -114,10 +123,16 @@ namespace Animals
             foxList2.RemoveAt(index);
         }
 
-        public static void DestroyGrass(int index)
+        public void DestroyGrass(int index)
         {
             grassList2.RemoveAt(index);
         }
+
+        public Simulation GetSimulation()
+        {
+            return simulation;
+        }
+
 
 
 
