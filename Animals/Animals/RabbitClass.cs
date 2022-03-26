@@ -25,7 +25,7 @@ namespace Animals
             if (age > 0)
             {
                 Rabbit rabbit = new Rabbit(0, true, 0);
-                Simulation.rabbitList.Insert(0, rabbit);
+                Simulation.rabbitList2.Insert(0, rabbit);
             }
         }
 
@@ -33,7 +33,7 @@ namespace Animals
         {
             if (alive == false)
             {
-                Simulation.rabbitList.RemoveAt(0);
+                Simulation.rabbitList2.RemoveAt(0);
             }
         }
 

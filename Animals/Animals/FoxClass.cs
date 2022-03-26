@@ -17,7 +17,7 @@ namespace Animals
         public void Hunt()
         {
             var random = new Random();
-            int index = random.Next(Simulation.rabbitList.Count);
+            int index = random.Next(Simulation.rabbitList2.Count);
             Simulation.KillRabbit(index);
             hunger = 0;
         }
@@ -25,14 +25,14 @@ namespace Animals
         public override void Reproduce()
         {
             Fox fox = new Fox(0, true, 0);
-            Simulation.foxList.Insert(0, fox);
+            Simulation.foxList2.Insert(0, fox);
         }
 
         public override void Kill()
         {
             if (alive == false)
             {
-                Simulation.foxList.RemoveAt(0);
+                Simulation.foxList2.RemoveAt(0);
             }
         }
 
