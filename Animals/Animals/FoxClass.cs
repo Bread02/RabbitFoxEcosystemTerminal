@@ -13,9 +13,12 @@ namespace Animals
 
         }
 
-        private void eat()
+        // randomly select Rabbit to kill and remove that Rabbit from simulation.
+        public override void Eat()
         {
-
+            var random = new Random();
+            int index = random.Next(Simulation.rabbitList.Count);
+            Simulation.KillRabbit(index);
         }
 
     }

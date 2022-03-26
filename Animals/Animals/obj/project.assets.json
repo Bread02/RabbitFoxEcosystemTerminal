@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Altai\\source\\repos\\Animals\\Animals\\Animals.csproj",
+      "projectUniqueName": "C:\\Users\\Altai\\Desktop\\RabbitFoxSimulationTerminal\\RabbitFoxEcosystemTerminal\\Animals\\Animals\\Animals.csproj",
       "projectName": "Animals",
-      "projectPath": "C:\\Users\\Altai\\source\\repos\\Animals\\Animals\\Animals.csproj",
+      "projectPath": "C:\\Users\\Altai\\Desktop\\RabbitFoxSimulationTerminal\\RabbitFoxEcosystemTerminal\\Animals\\Animals\\Animals.csproj",
       "packagesPath": "C:\\Users\\Altai\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Altai\\source\\repos\\Animals\\Animals\\obj\\",
+      "outputPath": "C:\\Users\\Altai\\Desktop\\RabbitFoxSimulationTerminal\\RabbitFoxEcosystemTerminal\\Animals\\Animals\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

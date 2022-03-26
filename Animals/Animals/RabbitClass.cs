@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Animals
 {
-    public class Rabbit : Animal
+    public class Rabbit : Animal, IRabbit
     {
         public Rabbit()
         {
@@ -18,5 +18,12 @@ namespace Animals
             Console.Write(base.GetAge());
             return base.GetAge();
         }
+
+        public override void Eat()
+        {
+
+        }
+
+
     }
 }

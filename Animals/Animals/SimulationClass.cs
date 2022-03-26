@@ -9,25 +9,25 @@ namespace Animals
     public class Simulation
     {
 
-        public List<object> numberOfFoxes;
-        public List<object> numberOfRabbits;
+        public static List<Fox> foxList = default!;
+        public static List<Rabbit> rabbitList = default!;
 
         public Simulation(int Foxes, int Rabbits, int steps)
         {
-            List<object> numberOfFoxes = new List<object>();
-            List<object> numberOfRabbits = new List<object>();
+            List<Fox> foxList = new List<Fox>();
+            List<Rabbit> rabbitList = new List<Rabbit>();
 
             for (int i = 0; i < Foxes; i++)
             {
                 Fox fox = new Fox();
-                numberOfFoxes.Add(fox);
+                foxList.Add(fox);
                 Console.WriteLine("Created Fox");
             }
 
             for (int i = 0; i < Rabbits; i++)
             {
                 Rabbit rabbit = new Rabbit();
-                numberOfRabbits.Add(rabbit);
+                rabbitList.Add(rabbit);
                 Console.WriteLine("Created Rabbit");
             }
         }
@@ -39,17 +39,17 @@ namespace Animals
 
 
         // remove Rabbit from simulation
-        public void KillRabbit()
+        public static void KillRabbit(int index)
         {
             // removes by ID
-            numberOfRabbits.Remove(1);
+           // rabbitList.Remove();
         }
 
         // remove fox from simulation
-        public void KillFox()
+        public void KillFox(int index)
         {
             // removes by ID
-            numberOfFoxes.Remove(1);
+          //  foxList.Remove();
         }
 
 
