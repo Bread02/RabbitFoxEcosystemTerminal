@@ -9,14 +9,18 @@ namespace Animals
     public class Simulation
     {
         // objects
-        public Animal animal;
-        public Fox fox;
-        public Rabbit rabbit;
-        public Grass grass;
+        private Animal animal;
+        private Fox fox;
+        private Rabbit rabbit;
+        private Grass grass;
+        private int numberOfSteps;
+
 
         public static List<Fox> foxList2 = new List<Fox>();
         public static List<Rabbit> rabbitList2 = new List<Rabbit>();
         public static List<Grass> grassList2 = new List<Grass>();
+
+        public static List<Rabbit> rabbitsToAdd = new List<Rabbit>();
 
         // creates the fox and rabbit list, and sets number of steps to run the simulation.
         public Simulation(int Foxes, int Rabbits, int Grass, int steps)
@@ -30,6 +34,8 @@ namespace Animals
 
             List<Grass> grassList = new List<Grass>();
             grassList = grassList2;
+
+            numberOfSteps = steps;
 
             for (int i = 0; i < Foxes; i++)
             {
@@ -52,21 +58,32 @@ namespace Animals
                 Console.WriteLine("Created Grass");
             }
 
-            Steps(steps);
+            Steps();
         }
 
         // one step ages an animal, increases an animal's hunger and triggers reproduction.
         // one step also lets foxes kill rabbits.
-        private void Steps(int steps)
+        private void Steps()
         {
-            for (int i = 1; i < steps; i++)
+
+            for (int i = 0; i < numberOfSteps; i++)
             {
                 // complete rabbit steps
                 rabbitList2.ForEach(rabbit => rabbit.IncreaseAge());
                 rabbitList2.ForEach(rabbit => rabbit.Kill());
-                //    rabbitList2.ForEach(rabbit => rabbit.Reproduce());
+                //   rabbitList2.ForEach(rabbit => rabbit.Reproduce());
+
+                // try to get this to copy the reproduce code, currently doubling rabbit population
+                var fixedSize = rabbitList2.ToArray();
+                foreach(var rabbit in fixedSize)
+                {
+                    rabbitList2.Add(rabbit);
+                }
+
+
                 rabbitList2.ForEach(rabbit => rabbit.IncreaseHunger());
                 rabbitList2.ForEach(rabbit => rabbit.Eat());
+
 
                 // complete fox steps
                 foxList2.ForEach(fox => fox.IncreaseAge());
@@ -79,6 +96,8 @@ namespace Animals
                 //   grassList2.ForEach(grass => grass.Reproduce());
                 Console.WriteLine("Step " + i + " complete.");
                 Console.WriteLine("There are " + foxList2.Count + " foxes, " + rabbitList2.Count + " rabbits and " + grassList2.Count + " grass.");
+
+                rabbitList2.AddRange(rabbitsToAdd);
             }
         }
 
@@ -95,7 +114,7 @@ namespace Animals
             foxList2.RemoveAt(index);
         }
 
-        public void DestroyGrass(int index)
+        public static void DestroyGrass(int index)
         {
             grassList2.RemoveAt(index);
         }

@@ -16,7 +16,10 @@ namespace Animals
         // a rabbit eats 1 grass per step
         public override void Eat()
         {
-
+            var random = new Random();
+            int index = random.Next(Simulation.grassList2.Count);
+            Simulation.DestroyGrass(index);
+            hunger = 0;
         }
 
         // reproduces between 4 and 6 rabbits if old enough
