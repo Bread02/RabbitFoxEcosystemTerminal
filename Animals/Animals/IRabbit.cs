@@ -9,5 +9,6 @@ namespace Animals
     public interface IRabbit
     {
         public void Kill();
+        public void IncreaseAge();
     }
 }

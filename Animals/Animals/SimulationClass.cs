@@ -61,35 +61,10 @@ namespace Animals
         // one step also lets foxes kill rabbits.
         private void Steps(int steps)
         {
-            for (int i = 0; i <= steps; i++)
+            for (int i = 0; i < rabbitList.Count; i++)
             {
-                rabbitList.ForEach(rabbit => rabbit.IncreaseAge());
-                /*
-                for (int i = 0; i < rabbitList.Count; i++)
-                {
-                    rabbitList[i] => rabbit.IncreaseAge();
-                }
-                */
-                /*
-                foreach(Rabbit rabbit in rabbitList)
-                {
-                    rabbit.IncreaseAge();
-                    rabbit.IncreaseHunger();
-                    rabbit.Reproduce();
-                    rabbit.Kill();
-                }
-                */
-
-
-                /*
-                fox.IncreaseAge();
-                fox.IncreaseHunger();
-                fox.Reproduce();
-                fox.Hunt();
-                fox.Kill();
-                Console.WriteLine("There are now " + foxList.Count + " foxes, " + rabbitList.Count + " rabbits and " + grassList.Count + " grass.");
-                */
-            }
+                rabbit.IncreaseAge();
+            }       
         }
 
 
