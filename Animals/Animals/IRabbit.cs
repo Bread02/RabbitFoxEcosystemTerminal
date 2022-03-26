@@ -8,6 +8,6 @@ namespace Animals
 {
     public interface IRabbit
     {
-        public void SetDead();
+        public void Kill();
     }
 }

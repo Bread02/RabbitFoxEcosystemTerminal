@@ -8,26 +8,33 @@ namespace Animals
 {
     public class Rabbit : Animal, IRabbit
     {
-        public Rabbit()
+        public Rabbit(int age, bool alive, int hunger)
         {
-            GetAge();
+            return;
         }
 
-        public override int GetAge()
-        {
-            Console.Write(base.GetAge());
-            return base.GetAge();
-        }
-
+        // a rabbit eats 1 grass per step
         public override void Eat()
         {
 
         }
 
-        // reproduces between 4 and 6 rabbits
+        // reproduces between 4 and 6 rabbits if old enough
         public override void Reproduce()
         {
+            if (age > 0)
+            {
+                Rabbit rabbit = new Rabbit(0, true, 0);
+                Simulation.rabbitList.Insert(0, rabbit);
+            }
+        }
 
+        public override void Kill()
+        {
+            if (alive == false)
+            {
+                Simulation.rabbitList.RemoveAt(0);
+            }
         }
 
 

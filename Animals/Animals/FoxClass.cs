@@ -8,9 +8,9 @@ namespace Animals
 {
     public class Fox : Animal
     {
-        public Fox()
+        public Fox(int age, bool alive, int hunger)
         {
-            Fox fox = new Fox();
+            return;
         }
 
         // randomly select Rabbit to kill and remove that Rabbit from simulation, sets hunger to 0.
@@ -21,6 +21,22 @@ namespace Animals
             Simulation.KillRabbit(index);
             hunger = 0;
         }
+
+        public override void Reproduce()
+        {
+            Fox fox = new Fox(0, true, 0);
+            Simulation.foxList.Insert(0, fox);
+        }
+
+        public override void Kill()
+        {
+            if (alive == false)
+            {
+                Simulation.foxList.RemoveAt(0);
+            }
+        }
+
+
 
     }
 }

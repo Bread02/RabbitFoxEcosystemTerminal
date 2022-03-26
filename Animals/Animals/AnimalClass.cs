@@ -12,7 +12,6 @@ namespace Animals
         protected int age = 0;
         protected bool alive = true;
         protected int hunger = 0;
-        protected int reproductionChance;
 
         // Start is called before the first frame update
 
@@ -28,20 +27,21 @@ namespace Animals
         }
 
         // kill animal
-        public void SetDead()
-        {
-            alive = false;
-        }
 
         public virtual void Eat()
         {
 
         }
 
-        //reproduce between 4 and 6 animals randomly
-        public virtual void Reproduce()
+        public virtual void Kill()
         {
 
+        }
+
+        //reproduce between 4 and 6 animals
+        public virtual void Reproduce()
+        {
+            
         }
 
         #region increase variables
@@ -67,7 +67,8 @@ namespace Animals
             if (hunger >= 100)
             {
                 // kill animal
-                SetDead();
+                alive = false;
+                Kill();
             }
         }
 
