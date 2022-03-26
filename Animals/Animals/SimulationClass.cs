@@ -14,9 +14,9 @@ namespace Animals
         public Rabbit rabbit;
         public Grass grass;
 
-        public static List<Fox> foxList2 = default!;
+        public static List<Fox> foxList2 = new List<Fox>();
         public static List<Rabbit> rabbitList2 = new List<Rabbit>();
-        public static List<Grass> grassList2 = default!;
+        public static List<Grass> grassList2 = new List<Grass>();
 
         // creates the fox and rabbit list, and sets number of steps to run the simulation.
         public Simulation(int Foxes, int Rabbits, int Grass, int steps)
@@ -34,7 +34,7 @@ namespace Animals
             for (int i = 0; i < Foxes; i++)
             {
                 Fox fox = new Fox(0, true, 0);
-                foxList.Insert(0, fox);
+                foxList2.Insert(0, fox);
                 Console.WriteLine("Created Fox");
             }
 
@@ -48,17 +48,9 @@ namespace Animals
             for (int i = 0; i < Grass; i++)
             {
                 Grass grass = new Grass(10);
-                grassList.Insert(0, grass);
+                grassList2.Insert(0, grass);
                 Console.WriteLine("Created Grass");
             }
-
-            // testing if rabbits are made
-            for (int i = 0; i < rabbitList.Count; i++)
-            {
-                if(rabbitList[i] != null)
-                Console.WriteLine(rabbitList[i]);
-            }
-
 
             Steps(steps);
         }
@@ -67,8 +59,22 @@ namespace Animals
         // one step also lets foxes kill rabbits.
         private void Steps(int steps)
         {
+            // complete rabbit steps
             rabbitList2.ForEach(rabbit => rabbit.IncreaseAge());
             rabbitList2.ForEach(rabbit => rabbit.Kill());
+        //    rabbitList2.ForEach(rabbit => rabbit.Reproduce());
+            rabbitList2.ForEach(rabbit => rabbit.IncreaseHunger());
+            rabbitList2.ForEach(rabbit => rabbit.Eat());
+
+            // complete fox steps
+            foxList2.ForEach(fox => fox.IncreaseAge());
+            foxList2.ForEach(fox => fox.Kill());
+          //  foxList2.ForEach(fox => fox.Reproduce());
+            foxList2.ForEach(fox => fox.IncreaseHunger());
+            foxList2.ForEach(fox => fox.Hunt());
+
+            // complete grass steps
+         //   grassList2.ForEach(grass => grass.Reproduce());
         }
 
 
@@ -82,6 +88,11 @@ namespace Animals
         public void KillFox(int index)
         {
             foxList2.RemoveAt(index);
+        }
+
+        public void DestroyGrass(int index)
+        {
+            grassList2.RemoveAt(index);
         }
 
 

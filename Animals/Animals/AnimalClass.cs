@@ -38,6 +38,14 @@ namespace Animals
 
         }
 
+        public void OldAgeDeath()
+        {
+            if(age > 20)
+            {
+                Kill();
+            }
+        }
+
         //reproduce between 4 and 6 animals
         public virtual void Reproduce()
         {
