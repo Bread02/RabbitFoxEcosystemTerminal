@@ -9,7 +9,7 @@ namespace Animals
     public class Animal
     {
 
-        protected int age = 0;
+        public int age = 0;
         protected bool alive = true;
         protected int hunger = 0;
 
@@ -40,14 +40,14 @@ namespace Animals
 
         public void OldAgeDeath()
         {
-            if(age > 20)
+            if(age > 2)
             {
                 Kill();
             }
         }
 
         //reproduce between 4 and 6 animals
-        public virtual void Reproduce()
+        public virtual void Reproduce(Simulation simulation)
         {
             
         }

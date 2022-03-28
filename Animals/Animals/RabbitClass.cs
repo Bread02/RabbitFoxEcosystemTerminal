@@ -6,44 +6,49 @@ using System.Threading.Tasks;
 
 namespace Animals
 {
-    public class Rabbit : Animal, IRabbit
+    public class Rabbit : Animal
     {
-        private Simulation simulation { get; set; }
+        private Simulation simulationClass;
+        private int grassEatAmount = 5;
 
-        private List<Rabbit> rabbitList {  get; set; }
-
+        // creates a rabbit.
         public Rabbit(int age, bool alive, int hunger, Simulation simulation)
         {
-            simulation = simulation.GetSimulation();
-            rabbitList = simulation.rabbitList2;
+            simulationClass = simulation;
         }
 
-        // a rabbit eats 1 grass per step
+        // a rabbit eats 1 grass per step, so destroys a random grass from the grassList2.
         public override void Eat()
         {
-            var random = new Random();
-            int index = random.Next(simulation.grassList2.Count);
-            simulation.DestroyGrass(index);
-            hunger = 0;
-        }
-
-        // reproduces between 4 and 6 rabbits if old enough
-        public override void Reproduce()
-        {
-            if (age > 0)
+            for (int i = 0; i < grassEatAmount; i++)
             {
-                Rabbit rabbit1 = new Rabbit(0, true, 0, simulation);
-              //  simulation.rabbitList2.Insert(0, rabbit1);
-                rabbitList.Insert(99, rabbit1);
+                if (simulationClass.grassList2.Count != 0)
+                {
+                    var random = new Random();
+                    int index = random.Next(simulationClass.grassList2.Count);
+                    simulationClass.DestroyGrass(index);
+                    hunger = 0;
+                }
+                else
+                {
+                    Console.WriteLine("No grass to eat");
+                    IncreaseHunger();
+                }
             }
         }
 
+        // reproduces between 4 and 6 rabbits if old enough. Adds rabbit onto rabbitList2.
+        public void Reproduce()
+        {
+            Rabbit rabbit = new Rabbit(0, true, 0, simulationClass);
+            simulationClass.rabbitList2.Insert(0, rabbit);
+        }
+
+
+        // Kills rabbit and removes from rabbitList2
         public override void Kill()
         {
-            if (alive == false)
-            {
-                simulation.rabbitList2.RemoveAt(0);
-            }
+                simulationClass.rabbitList2.RemoveAt(0);
         }
 
 

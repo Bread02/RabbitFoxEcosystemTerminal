@@ -8,19 +8,22 @@ namespace Animals
 {
     public class Grass
     {
-        private Simulation simulation { get; set; }
+        private Simulation simulationClass;
 
-        private int grassReproductionRate;
-        public Grass(int grassReproductionRate)
+        private int grassReproductionRateSet = 1;
+
+        public Grass(int grassReproductionRate, Simulation simulation)
         {
-            return;
+            this.simulationClass = simulation;
+            this.grassReproductionRateSet = grassReproductionRate;
         }
 
         public void Reproduce()
         {
-            for (int i = 0; i < grassReproductionRate; i++)
+            for (int i = 0; i < grassReproductionRateSet; i++)
             {
-                Grass grass = new Grass(grassReproductionRate);
+                Grass grass = new Grass(grassReproductionRateSet, simulationClass);
+                simulationClass.grassList2.Add(grass);
             }
         }
     }

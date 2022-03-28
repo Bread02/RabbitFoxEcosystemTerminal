@@ -8,11 +8,13 @@ namespace Animals
 {
     public class CreateSimulation
     {
+
         // creates a simulation with the specified starting number of rabbits, foxes, grass and steps
         public static void Main(string[] args)
         {
-            Simulation simulation = new Simulation(2, 20, 10000, 5);
-            Animal animal = new Animal();
+            Simulation simulation = new Simulation(2, 20, 1000, 5);
+
+        //    Animal animal = new Animal();
         }
     }
 }
