@@ -62,7 +62,7 @@ namespace Animals
 
         public void IncreaseHunger()
         {
-            hunger += 50;
+            hunger += 100;
         }
 
 #endregion

@@ -17,7 +17,7 @@ namespace Animals
         public static List<Rabbit> rabbitsToAdd = new List<Rabbit>();
 
         // creates the fox and rabbit list, and sets number of steps to run the simulation.
-        public Simulation(int Foxes, int Rabbits, int Grass, int numberOfSteps)
+        public Simulation(int Foxes, int Rabbits, int Grass, int GrassReproductionRate, int numberOfSteps)
         {
             this.numberOfSteps = numberOfSteps;
             // create lists then store them as a class variable
@@ -46,7 +46,7 @@ namespace Animals
 
             for (int i = 0; i < Grass; i++)
             {
-                Grass grass = new Grass(1, this);
+                Grass grass = new Grass(GrassReproductionRate, this);
                 grassList2.Insert(0, grass);
                 Console.WriteLine("Created Grass");
             }
@@ -64,7 +64,7 @@ namespace Animals
                 Console.WriteLine("Doing step " + i);
 
                 // complete rabbit steps
-                int rabbitsBeforeReproduction = 0;
+                int rabbitsBeforeReproduction;
                 rabbitsBeforeReproduction = rabbitList2.Count();
 
                 for (int l = 0; l < rabbitsBeforeReproduction; l++)
@@ -75,16 +75,18 @@ namespace Animals
                 }
 
                 // complete fox steps
-                int foxesBeforeReproduction = 0;
+                int foxesBeforeReproduction;
                 foxesBeforeReproduction = foxList2.Count();
                 for (int v = 0; v < foxesBeforeReproduction; v++)
                 {
-                    foxList2[v].Hunt();
                     foxList2[v].Reproduce();
+                    foxList2[v].Hunt();
+                    foxList2[v].Starve();
+
                 }
 
                 // complete grass steps
-                int grassBeforeReproduction = 0;
+                int grassBeforeReproduction;
                 grassBeforeReproduction = grassList2.Count();
                 for(int m = 0; m < grassBeforeReproduction; m++)
                 {
@@ -114,9 +116,9 @@ namespace Animals
             {
                 this.grassList2.RemoveAt(index);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
+                return;
             }
         }
 

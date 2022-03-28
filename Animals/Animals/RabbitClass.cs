@@ -31,7 +31,6 @@ namespace Animals
                 }
                 else
                 {
-                    Console.WriteLine("No grass to eat");
                     IncreaseHunger();
                 }
             }
